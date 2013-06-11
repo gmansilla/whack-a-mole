@@ -1,0 +1,74 @@
+div#game {
+    /*background-color: pink;*/
+    width: 340px;
+    min-height: 250px;
+    position: absolute;
+
+}
+
+.top-section {
+    padding-top: 20px;
+    padding-left: 55px;
+    float: left;
+
+    background-color: pink;
+}
+
+.middle-section {
+    /*clear: both;*/
+    float: left;
+    padding-top: 10px;
+    margin-left: 25px;
+
+    background-color: blue;
+}
+
+.bottom-section {
+    float: left;
+    padding-top: 10px;
+    margin-left: 55px;
+
+}
+
+.hole-image {
+    background-image: url("../images/hole.png"); width: 55px; height: 5px;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 5px;
+
+    vertical-align: bottom;
+}
+
+.hole-mole {
+    min-height: 55px;
+    
+}
+
+.mole {
+    background-image: url("../images/mole-small.png"); width: 55px; height: 55px;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 55px;
+    /*-webkit-transition: all 4s linear;*/
+    position: relative;
+
+}
+
+.hole {
+    width: 60px;
+    min-height: 60px;
+    /*background-color: palegreen;*/
+    float: left;
+    margin-right: 40px;
+    margin-left: 0px;
+    margin-right: 15px;
+
+}
+
+.hide {
+    display: none;
+}
+
+.show-up {
+    -webkit-transform: translate(50px, 50px);
+}
