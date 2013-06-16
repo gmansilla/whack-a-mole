@@ -32,6 +32,7 @@ $(document).ready(function() {
         $(".mole").each(function(){
             $(this).click(function() {
                 game.score++;
+                hideMole($(this), 100);
             });
         });
 
