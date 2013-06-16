@@ -3,6 +3,7 @@ div#game {
     width: 600px;
     min-height: 500px;
     position: absolute;
+    background-color: pink;
 
 }
 

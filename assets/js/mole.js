@@ -33,6 +33,7 @@ $(document).ready(function() {
             $(this).click(function() {
                 game.score++;
                 hideMole($(this), 100);
+                $("#score").text("Current Score: " + game.score);
             });
         });
 
