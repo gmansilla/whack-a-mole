@@ -1,5 +1,5 @@
 var game = {
-	time: 30,
+	time: 10,
 	endEasy: 10,
 	endMedium: 20,
 	endHard: 30,
@@ -7,7 +7,8 @@ var game = {
 	speedMedium: 500,
 	speedHard: 250,
 	startTime: 0,
-    currentTime: 0
+    currentTime: 0,
+    score: 0
 };
 var creationTime = {
     mole1: 0,
@@ -26,26 +27,29 @@ $(document).ready(function() {
     $(".startButton").click(function() {
         var start = new Date();
         game.startTime = start.getTime();
+        game.score = 0;
+        console.log("starting game");
         $(".mole").each(function(){
-            showMole(this, 100);
-            hideMole(this, 100);
+            $(this).click(function() {
+                game.score++;
+            });
         });
 
         if(newTimer == null) {
             newTimer = jQuery.timer(0, function(timer) {
                     var currentTime = new Date();
                     game.currentTime = currentTime.getTime();
-                    console.log(game.currentTime - game.startTime);
                     if ((game.currentTime - game.startTime) / 1000 < game.time) { //game in not over
                         handleMoles();
-                        timer.reset(Math.floor(Math.random() * 1200));
+                        timer.reset(Math.floor(Math.random() * 1000));
                     } else {
                         if(newTimer != null) {
                             newTimer.stop();
                         }
                         newTimer = null;
-                        resetMoles();
                         console.log("game is over");
+                        resetMoles(false);
+
                     }
                 });
         }
@@ -54,12 +58,9 @@ $(document).ready(function() {
 
 //hides/shows
 function handleMoles() {
-    var moles = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
     var index = Math.floor((Math.random() * 10) + 1);
-    if ($("#mole" + index).hasClass("hide")) {
-        showMole($("#mole" + index), 1000);
-    }
-    resetMoles();
+    showMole($("#mole" + index), 1000);
+    resetMoles(true);
 }
 
 function showMole(mole, speed) {
@@ -68,29 +69,30 @@ function showMole(mole, speed) {
     $(mole).removeClass("hide");
     $(mole).show("slide", { direction: "down" }, speed);
     creationTime[$(mole).attr('id')] = currentTime;
-    console.log("showing");
 }
 
 function hideMole(mole, speed) {
 	$(mole).hide("slide", { direction: "down" }, speed);
-    $(mole).addClass("hide");
     creationTime[$(mole).attr('id')] = 0;
 }
 
 /*
 * Looks for shown moles and hide them if they need to be hidden
 */
-function resetMoles() {
+function resetMoles(useWait) {
+    //console.log("resetting");
     $(".mole").each(function(){
         if (!$(this).hasClass("hide")) {
-            var now = new Date();
-            var currentTime = now.getTime();
-            var elapsedTime = currentTime - creationTime[$(this).attr('id')];
-            if (elapsedTime > 1000) {
-                hideMole(this);
+            if (useWait) {
+                var now = new Date();
+                var currentTime = now.getTime();
+                var elapsedTime = currentTime - creationTime[$(this).attr('id')];
+                if (elapsedTime > 1300) {
+                    hideMole(this, 1000);
+                }
+            } else {
+                hideMole(this, 100);
             }
         }
-
     });
 }
-

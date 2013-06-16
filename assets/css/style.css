@@ -65,10 +65,6 @@ div#game {
 
 }
 
-.hide {
-    display: none;
-}
-
 .show-up {
     -webkit-transform: translate(50px, 50px);
 }
