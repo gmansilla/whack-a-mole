@@ -72,3 +72,37 @@ div#game {
 .show-up {
     -webkit-transform: translate(50px, 50px);
 }
+
+.clear {
+    clear:both;
+}
+
+.startButton
+{
+    background-color:#32C732;
+    border-color:#539BCE;
+    border-style:solid;
+    border-width:1px;
+    color:#FFFFFF;
+    float:left;
+    margin:3px;
+    width:50px;
+}
+
+.stopButton
+{
+    background-color:#BF0505;
+    border-color:#539BCE;
+    border-style:solid;
+    border-width:1px;
+    color:#FFFFFF;
+    float:left;
+    margin:3px;
+    width:50px;
+}
+
+#controls {
+    clear: both;
+    top: 400px;
+    position: relative;
+}
