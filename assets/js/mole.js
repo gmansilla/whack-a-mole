@@ -1,12 +1,13 @@
 var game = {
-	time: 10,
+	time: 30,
 	endEasy: 10,
 	endMedium: 20,
 	endHard: 30,
 	speedEasy: 1000,
 	speedMedium: 500,
 	speedHard: 250,
-	startTime: 0
+	startTime: 0,
+    currentTime: 0
 };
 var creationTime = {
     mole1: 0,
@@ -23,11 +24,29 @@ var creationTime = {
 var newTimer;
 $(document).ready(function() {
     $(".startButton").click(function() {
-        //game.startTime = start.getTime();
+        var start = new Date();
+        game.startTime = start.getTime();
+        $(".mole").each(function(){
+            showMole(this, 100);
+            hideMole(this, 100);
+        });
+
         if(newTimer == null) {
             newTimer = jQuery.timer(0, function(timer) {
-                    handleMoles();
-                    timer.reset(Math.floor(Math.random() * 3000));
+                    var currentTime = new Date();
+                    game.currentTime = currentTime.getTime();
+                    console.log(game.currentTime - game.startTime);
+                    if ((game.currentTime - game.startTime) / 1000 < game.time) { //game in not over
+                        handleMoles();
+                        timer.reset(Math.floor(Math.random() * 1200));
+                    } else {
+                        if(newTimer != null) {
+                            newTimer.stop();
+                        }
+                        newTimer = null;
+                        resetMoles();
+                        console.log("game is over");
+                    }
                 });
         }
     });
@@ -38,12 +57,9 @@ function handleMoles() {
     var moles = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
     var index = Math.floor((Math.random() * 10) + 1);
     if ($("#mole" + index).hasClass("hide")) {
-        //showMole($(".mole")[index], 500);
         showMole($("#mole" + index), 1000);
-        //showMole($("#mole2"), 1000);
     }
-
-    //resetMoles();
+    resetMoles();
 }
 
 function showMole(mole, speed) {
@@ -61,21 +77,6 @@ function hideMole(mole, speed) {
     creationTime[$(mole).attr('id')] = 0;
 }
 
-function stopGame() {
-
-}
-
-function isGameOver() {
-	var now = new Date();
-	var currentTime = now.getTime();
-	var elapsedTime = currentTime - game.startTime;
-
-	if (elapsedTime > game.time * 1000) {
-		return true;
-	}
-	return false;
-}
-
 /*
 * Looks for shown moles and hide them if they need to be hidden
 */
@@ -85,7 +86,6 @@ function resetMoles() {
             var now = new Date();
             var currentTime = now.getTime();
             var elapsedTime = currentTime - creationTime[$(this).attr('id')];
-            console.log(elapsedTime/1000);
             if (elapsedTime > 1000) {
                 hideMole(this);
             }
