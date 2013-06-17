@@ -117,3 +117,7 @@ div#game {
     float: none !important;
     width: 60% !important;
 }
+
+.modal-body {
+    min-height: 535px;
+}

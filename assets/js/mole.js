@@ -72,9 +72,6 @@ function showMole(mole, speed) {
         game.molesShown++;
         $("#counterMolesShown").flipCounter("setNumber", game.molesShown);
     }
-
-
-
 }
 
 function hideMole(mole, speed) {
@@ -100,6 +97,7 @@ function resetMoles(useWait) {
                 $(this).unbind('click');
                 game.molesShown = 0;
                 $("#controls").show("slide", {direction: "right"}, 1000);
+                $('#modalWinner').modal('show');
             }
         }
     });
@@ -124,4 +122,5 @@ function initializeBoard() {
         easing: false, // the easing function to apply to animations, you can override this with a jQuery.easing method
         duration:1000 // duration of animations
     });
+    $(".counter").flipCounter("setNumber", 0);
 }
