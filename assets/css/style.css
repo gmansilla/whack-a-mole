@@ -38,12 +38,13 @@ body {
 }
 
 div#game {
-    /*background-color: pink;*/
     width: 600px;
     min-height: 500px;
-
     background-image: url("../images/mole-background.png");
-    background-size: 600px 500px;
+    background-repeat:no-repeat;
+    background-size: 520px 500px;
+
+
 
 }
 
@@ -51,8 +52,6 @@ div#game {
     padding-top: 20px;
     padding-left: 55px;
     float: left;
-
-    /*background-color: pink;*/
 }
 
 .middle-section {
@@ -60,8 +59,6 @@ div#game {
     float: left;
     padding-top: 10px;
     margin-left: 25px;
-
-    /*background-color: blue;*/
 }
 
 .bottom-section {
@@ -97,36 +94,26 @@ div#game {
 .hole {
     width: 112px;
     min-height: 104px;
-    /*background-color: palegreen;*/
     float: left;
     margin-right: 40px;
     margin-left: 0px;
     margin-right: 15px;
-
-}
-
-.show-up {
-    -webkit-transform: translate(50px, 50px);
-}
-
-.clear {
-    clear:both;
-}
-
-.stopButton
-{
-    background-color:#BF0505;
-    border-color:#539BCE;
-    border-style:solid;
-    border-width:1px;
-    color:#FFFFFF;
-    float:left;
-    margin:3px;
-    width:50px;
 }
 
 #controls {
     clear: both;
+    text-align: center;
+    padding-right: 80px;
+    margin-top: 40px;
+}
 
-    
+#score-board {
+    text-align: center;
+    padding-right: 80px;
+}
+
+.center-table {
+    margin: 0 auto !important;
+    float: none !important;
+    width: 60% !important;
 }

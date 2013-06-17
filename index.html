@@ -93,11 +93,23 @@
                 <div class="clear"></div>
 
                 <!--<div class="stopButton">Reset!</div>-->
-                <div id="score">Current Score: 0</div>
                 <div class="clear"></div>
                 <p>
                     <button class="startButton btn btn-large btn-success" type="button">Start!</button>
                 </p>
+            </div>
+            <div id="score-board">
+                <table class="table center-table">
+                    <tr class="warning">
+                        <td>Moles</td>
+                        <td id="counterMolesShown" class="counter"><input type="hidden" name="counter-value" value="0" /></td>
+                    </tr>
+                    <tr class="success">
+                        <td>Hits</td>
+                        <td id="counterHits" class="counter"><input type="hidden" name="counter-value" value="0" /></td>
+                    </tr>
+                </table>
+
             </div>
             <div>
                 <audio id="sound-hit">
@@ -117,7 +129,8 @@
 
     <div id="footer">
         <div class="container">
-            <p class="muted credit">Developed by <a href="http://www.github.com/gmansilla/">Guillermo Mansilla</a> for <a href="http://http://www.centennialcollege.ca/">Centennial College</a>.</p>
+            <p class="muted credit">Developed by <a href="http://www.github.com/gmansilla/">Guillermo Mansilla</a>
+                for <a href="http://http://www.centennialcollege.ca/">Centennial College</a>.</p>
         </div>
     </div>
 
@@ -125,6 +138,7 @@
     <script src="assets/js/bootstrap.min.js"></script>
     <script src="assets/js/jquery-ui.js"></script>
     <script src="assets/js/jquery.timer.js"></script>
+    <script src="assets/js/jquery.flipCounter.1.2.pack.js"></script>
     <script src="assets/js/mole.js"></script>
 </body>
 </html>

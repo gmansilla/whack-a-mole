@@ -19,6 +19,8 @@ var creationTime = {
 }
 var newTimer;
 $(document).ready(function() {
+    $("#score-board").hide();
+    $("#controls").show();
     $(".startButton").click(function() {
         initializeBoard();
         $(".mole").each(function(){
@@ -27,7 +29,7 @@ $(document).ready(function() {
                 $("#sound-hit")[0].currentTime = 0;
                 game.score++;
                 hideMole($(this), 100);
-                $("#score").text("Current Score: " + game.score);
+                $("#counterHits").flipCounter("setNumber", game.score);
             });
         });
 
@@ -63,10 +65,16 @@ function handleMoles() {
 function showMole(mole, speed) {
     var now = new Date();
     var currentTime = now.getTime();
-    $(mole).removeClass("hide");
-    $(mole).show("slide", { direction: "down" }, speed);
-    creationTime[$(mole).attr('id')] = currentTime;
-    game.molesShown++;
+
+    if (creationTime[$(mole).attr('id')] == 0) {
+        $(mole).show("slide", { direction: "down" }, speed);
+        creationTime[$(mole).attr('id')] = currentTime;
+        game.molesShown++;
+        $("#counterMolesShown").flipCounter("setNumber", game.molesShown);
+    }
+
+
+
 }
 
 function hideMole(mole, speed) {
@@ -84,22 +92,36 @@ function resetMoles(useWait) {
                 var now = new Date();
                 var currentTime = now.getTime();
                 var elapsedTime = currentTime - creationTime[$(this).attr('id')];
-                if (elapsedTime > 1100) {
-                    hideMole(this, 800);
+                if (elapsedTime > 1400) {
+                    hideMole(this, 900);
                 }
             } else {
                 hideMole(this, 100);
                 $(this).unbind('click');
+                game.molesShown = 0;
+                $("#controls").show("slide", {direction: "right"}, 1000);
             }
         }
     });
 }
 
 function initializeBoard() {
+    $("#score-board").show("slide", { direction: "right" }, 800);
+    $("#controls").hide("slide", {direction: "left"}, 800);
     var start = new Date();
     game.startTime = start.getTime();
     game.score = 0;
     $("#sound-background")[0].play();
     $("#sound-background")[0].volume = 0.5;
     $("#score").text("Current Score: 0");
+
+    $(".counter").flipCounter({
+        number:0, // the initial number the counter should display, overrides the hidden field
+        numIntegralDigits:2, // number of places left of the decimal point to maintain
+        digitHeight:40, // the height of each digit in the flipCounter-medium.png sprite image
+        digitWidth:30, // the width of each digit in the flipCounter-medium.png sprite image
+        imagePath:"assets/img/flipCounter-medium.png", // the path to the sprite image relative to your html document
+        easing: false, // the easing function to apply to animations, you can override this with a jQuery.easing method
+        duration:1000 // duration of animations
+    });
 }
