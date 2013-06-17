@@ -1,11 +1,5 @@
 var game = {
 	time: 10,
-	endEasy: 10,
-	endMedium: 20,
-	endHard: 30,
-	speedEasy: 1000,
-	speedMedium: 500,
-	speedHard: 250,
 	startTime: 0,
     currentTime: 0,
     score: 0,
@@ -30,9 +24,12 @@ $(document).ready(function() {
         $(".mole").each(function(){
             $(this).click(function() {
                 $("#sound-hit")[0].play();
+                $("#sound-hit")[0].currentTime = 0;
+                console.log("score BEFORE " + game.score);
                 game.score++;
+                console.log("score        AFTER " + game.score);
                 hideMole($(this), 100);
-                $("#score").text("Current Score: " + game.score);
+                //$("#score").text("Current Score: " + game.score);
             });
         });
 
@@ -40,7 +37,8 @@ $(document).ready(function() {
             newTimer = jQuery.timer(0, function(timer) {
                     var currentTime = new Date();
                     game.currentTime = currentTime.getTime();
-                    if ((game.currentTime - game.startTime) / 1000 < game.time) { //game in not over
+                    var elapsedTime = (game.currentTime - game.startTime) / 1000 ;
+                    if (elapsedTime < game.time) { //game is not over
                         handleMoles();
                         timer.reset(Math.floor(Math.random() * 1000));
                     } else {
@@ -60,7 +58,7 @@ $(document).ready(function() {
 //hides/shows
 function handleMoles() {
     var index = Math.floor((Math.random() * 10) + 1);
-    showMole($("#mole" + index), 1000);
+    showMole($("#mole" + index), 900);
     resetMoles(true);
 }
 
@@ -88,11 +86,12 @@ function resetMoles(useWait) {
                 var now = new Date();
                 var currentTime = now.getTime();
                 var elapsedTime = currentTime - creationTime[$(this).attr('id')];
-                if (elapsedTime > 1300) {
-                    hideMole(this, 1000);
+                if (elapsedTime > 1100) {
+                    hideMole(this, 800);
                 }
             } else {
                 hideMole(this, 100);
+                $(this).unbind('click');
             }
         }
     });
@@ -104,4 +103,5 @@ function initializeBoard() {
     game.score = 0;
     $("#sound-background")[0].play();
     $("#sound-background")[0].volume = 0.5;
+    $("#score").text("Current Score: 0");
 }

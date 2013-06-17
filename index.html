@@ -2,6 +2,7 @@
 <html>
 <head>
     <link rel="stylesheet" href="assets/css/style.css" type="text/css" />
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet" media="screen">
     <title>Whack A Mole</title>
 </head>
 <body>
@@ -85,10 +86,13 @@
     </div>
     <div id="controls">
         <div class="clear"></div>
-        <div class="startButton">Start!</div>
+
         <!--<div class="stopButton">Reset!</div>-->
         <div id="score">Current Score: 0</div>
         <div class="clear"></div>
+        <p>
+            <button class="startButton btn btn-large btn-success" type="button">Start!</button>
+        </p>
     </div>
     <div>
         <audio id="sound-hit">
@@ -102,6 +106,7 @@
     </div>
 
     <script src="assets/js/jquery.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
     <script src="assets/js/jquery-ui.js"></script>
     <script src="assets/js/jquery.timer.js"></script>
     <script src="assets/js/mole.js"></script>
