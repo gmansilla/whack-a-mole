@@ -3,7 +3,7 @@
 <head>
     <link rel="stylesheet" href="assets/css/style.css" type="text/css" />
     <link href="assets/css/bootstrap.min.css" rel="stylesheet" media="screen">
-    <title>Whack A Mole</title>
+    <title>Whack A Mole Game</title>
 </head>
 <body>
     <div id="welcome">
@@ -12,10 +12,16 @@
                 <h1>Welcome to Whack A Mole Game</h1>
             </div>
             <p class="lead">
-                A lot of moles will appear randomly, your objective is to hit at least 15 of them within 15 seconds
-            </p>
-            <p>
+                A lot of moles will appear randomly, your objective is to hit at least 15 of them within 15 seconds.
                 Be sure to hit them before they start to hide...
+            </p>
+
+            <p>
+                <i class="icon-user"></i> Guillermo Mansilla - Student ID 300714073
+                <br>
+                <i class="icon-envelope"></i> mansillag AT gmail DOT com
+                <br>
+                <i class="icon-book"></i> Source code is available <a href="https://github.com/gmansilla/whack-a-mole/commits/master">here</a>
             </p>
             <p>
                 <button id ="showBoard" class="btn btn-success" data-dismiss="modal" aria-hidden="true">Take me to the board!</button>
@@ -28,7 +34,7 @@
     <div id="wrap" style="display: none">
         <div class="container">
             <div class="page-header">
-                <h1>Whack A Mole</h1>
+                <h1>Whack A Mole Game</h1>
             </div>
             <div id="game">
                 <div class="top-section">
@@ -116,11 +122,11 @@
             <div id="score-board">
                 <table class="table center-table">
                     <tr class="warning">
-                        <td>Moles</td>
+                        <td><span class="spanCounter">Moles</span></td>
                         <td id="counterMolesShown" class="counter"><input type="hidden" name="counter-value" value="0" /></td>
                     </tr>
                     <tr class="success">
-                        <td>Hits</td>
+                        <td><span class="spanCounter">Hits</span></td>
                         <td id="counterHits" class="counter"><input type="hidden" name="counter-value" value="0" /></td>
                     </tr>
                 </table>
@@ -171,7 +177,9 @@
             <h3 class="text-error">You Lose! =( </h3>
         </div>
         <div class="modal-body-lose">
-            <p class="text-info">Come on, you can do it!</p>
+            <br />
+            <br />
+            <p class="lead text-info text-center">Come on, you can do it!</p>
         </div>
         <div class="modal-footer">
             <button class="btn btn-success" data-dismiss="modal" aria-hidden="true">Close</button>
@@ -180,7 +188,7 @@
 
     <div id="footer">
         <div class="container">
-            <p class="muted credit">Developed by <a href="http://www.github.com/gmansilla/">Guillermo Mansilla</a>
+            <p class="muted credit">Developed by <a href="https://github.com/gmansilla/whack-a-mole">Guillermo Mansilla</a>
                 for <a href="http://http://www.centennialcollege.ca/">Centennial College</a>.</p>
         </div>
     </div>

@@ -122,3 +122,15 @@ div#game {
 .modal-body {
     min-height: 535px;
 }
+
+td {
+    font-size: 45px;
+}
+
+.spanCounter {
+    padding-top: 8px !important;
+}
+
+.modal-body-lose {
+    min-height: 100px;
+}
