@@ -6,103 +6,119 @@
     <title>Whack A Mole</title>
 </head>
 <body>
-    <div id="game">
-        <div class="top-section">
-            <div id="hole1" class="hole">
-                <div id="hole-mole1" class="hole-mole">
-                    <div id="mole1" class="mole" style="display: none;"></div>
-                </div>
-                <div class="hole-image"></div>
+    <div id="wrap">
+        <div class="container">
+            <div class="page-header">
+                <h1>Whack A Mole</h1>
             </div>
+            <div id="game">
+                <div class="top-section">
+                    <div id="hole1" class="hole">
+                        <div id="hole-mole1" class="hole-mole">
+                            <div id="mole1" class="mole" style="display: none;"></div>
+                        </div>
+                        <div class="hole-image"></div>
+                    </div>
 
-            <div id="hole2" class="hole">
-                <div id="hole-mole2" class="hole-mole">
-                    <div id="mole2" class="mole" style="display: none;"></div>
+                    <div id="hole2" class="hole">
+                        <div id="hole-mole2" class="hole-mole">
+                            <div id="mole2" class="mole" style="display: none;"></div>
+                        </div>
+                        <div class="hole-image"></div>
+                    </div>
+
+                    <div id="hole3" class="hole">
+                        <div id="hole-mole3" class="hole-mole">
+                            <div id="mole3" class="mole" style="display: none;"></div>
+                        </div>
+                        <div class="hole-image"></div>
+                    </div>
                 </div>
-                <div class="hole-image"></div>
+
+                <div class="middle-section">
+                    <div id="hole4" class="hole">
+                        <div id="hole-mole4" class="hole-mole">
+                            <div id="mole4" class="mole" style="display: none;"></div>
+                        </div>
+                        <div class="hole-image"></div>
+                    </div>
+
+                    <div id="hole5" class="hole">
+                        <div id="hole-mole5" class="hole-mole">
+                            <div id="mole5" class="mole" style="display: none;"></div>
+                        </div>
+                        <div class="hole-image"></div>
+                    </div>
+
+                    <div id="hole6" class="hole">
+                        <div id="hole-mole6" class="hole-mole">
+                            <div id="mole6" class="mole" style="display: none;"></div>
+                        </div>
+                        <div class="hole-image"></div>
+                    </div>
+
+                    <div id="hole7" class="hole">
+                        <div id="hole-mole7" class="hole-mole">
+                            <div id="mole7" class="mole" style="display: none;"></div>
+                        </div>
+                        <div class="hole-image"></div>
+                    </div>
+                </div>
+
+                <div class = "bottom-section">
+                    <div id="hole8" class="hole">
+                        <div id="hole-mole8" class="hole-mole">
+                            <div id="mole8" class="mole" style="display: none;"></div>
+                        </div>
+                        <div class="hole-image"></div>
+                    </div>
+
+                    <div id="hole9" class="hole">
+                        <div id="hole-mole9" class="hole-mole">
+                            <div id="mole9" class="mole" style="display: none;"></div>
+                        </div>
+                        <div class="hole-image"></div>
+                    </div>
+
+                    <div id="hole10" class="hole">
+                        <div id="hole-mole10" class="hole-mole">
+                            <div id="mole10" class="mole" style="display: none;"></div>
+                        </div>
+                        <div class="hole-image"></div>
+                    </div>
+                </div>
+
             </div>
+            <div id="controls">
+                <div class="clear"></div>
 
-            <div id="hole3" class="hole">
-                <div id="hole-mole3" class="hole-mole">
-                    <div id="mole3" class="mole" style="display: none;"></div>
-                </div>
-                <div class="hole-image"></div>
+                <!--<div class="stopButton">Reset!</div>-->
+                <div id="score">Current Score: 0</div>
+                <div class="clear"></div>
+                <p>
+                    <button class="startButton btn btn-large btn-success" type="button">Start!</button>
+                </p>
+            </div>
+            <div>
+                <audio id="sound-hit">
+                    <source src="assets/sounds/hit.mp3" />
+                    <source src="assets/sounds/hit.wav" />
+                </audio>
+                <audio id="sound-background">
+                    <source src="assets/sounds/background.mp3" />
+                    <source src="assets/sounds/background.wav" />
+                </audio>
             </div>
         </div>
+        <div id="push">
 
-        <div class="middle-section">
-            <div id="hole4" class="hole">
-                <div id="hole-mole4" class="hole-mole">
-                    <div id="mole4" class="mole" style="display: none;"></div>
-                </div>
-                <div class="hole-image"></div>
-            </div>
-
-            <div id="hole5" class="hole">
-                <div id="hole-mole5" class="hole-mole">
-                    <div id="mole5" class="mole" style="display: none;"></div>
-                </div>
-                <div class="hole-image"></div>
-            </div>
-
-            <div id="hole6" class="hole">
-                <div id="hole-mole6" class="hole-mole">
-                    <div id="mole6" class="mole" style="display: none;"></div>
-                </div>
-                <div class="hole-image"></div>
-            </div>
-
-            <div id="hole7" class="hole">
-                <div id="hole-mole7" class="hole-mole">
-                    <div id="mole7" class="mole" style="display: none;"></div>
-                </div>
-                <div class="hole-image"></div>
-            </div>
         </div>
-
-        <div class = "bottom-section">
-            <div id="hole8" class="hole">
-                <div id="hole-mole8" class="hole-mole">
-                    <div id="mole8" class="mole" style="display: none;"></div>
-                </div>
-                <div class="hole-image"></div>
-            </div>
-
-            <div id="hole9" class="hole">
-                <div id="hole-mole9" class="hole-mole">
-                    <div id="mole9" class="mole" style="display: none;"></div>
-                </div>
-                <div class="hole-image"></div>
-            </div>
-
-            <div id="hole10" class="hole">
-                <div id="hole-mole10" class="hole-mole">
-                    <div id="mole10" class="mole" style="display: none;"></div>
-                </div>
-                <div class="hole-image"></div>
-            </div>
-        </div>
-
     </div>
-    <div id="controls">
-        <div class="clear"></div>
 
-        <!--<div class="stopButton">Reset!</div>-->
-        <div id="score">Current Score: 0</div>
-        <div class="clear"></div>
-        <p>
-            <button class="startButton btn btn-large btn-success" type="button">Start!</button>
-        </p>
-    </div>
-    <div>
-        <audio id="sound-hit">
-            <source src="assets/sounds/hit.mp3" />
-            <source src="assets/sounds/hit.wav" />
-        </audio>
-        <audio id="sound-background">
-            <source src="assets/sounds/background.mp3" />
-            <source src="assets/sounds/background.wav" />
-        </audio>
+    <div id="footer">
+        <div class="container">
+            <p class="muted credit">Developed by <a href="http://www.github.com/gmansilla/">Guillermo Mansilla</a> for <a href="http://http://www.centennialcollege.ca/">Centennial College</a>.</p>
+        </div>
     </div>
 
     <script src="assets/js/jquery.js"></script>

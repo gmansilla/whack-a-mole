@@ -25,11 +25,9 @@ $(document).ready(function() {
             $(this).click(function() {
                 $("#sound-hit")[0].play();
                 $("#sound-hit")[0].currentTime = 0;
-                console.log("score BEFORE " + game.score);
                 game.score++;
-                console.log("score        AFTER " + game.score);
                 hideMole($(this), 100);
-                //$("#score").text("Current Score: " + game.score);
+                $("#score").text("Current Score: " + game.score);
             });
         });
 
