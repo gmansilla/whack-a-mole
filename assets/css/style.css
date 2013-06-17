@@ -10,7 +10,6 @@ body {
     margin: 0 auto -60px;
 }
 
-
 #push, #push2
 #footer {
     height: 60px;
@@ -44,9 +43,6 @@ div#game {
     background-image: url("../images/mole-background.png");
     background-repeat:no-repeat;
     background-size: 520px 500px;
-
-
-
 }
 
 .top-section {
@@ -56,7 +52,6 @@ div#game {
 }
 
 .middle-section {
-    /*clear: both;*/
     float: left;
     padding-top: 10px;
     margin-left: 25px;
@@ -66,7 +61,6 @@ div#game {
     float: left;
     padding-top: 10px;
     margin-left: 55px;
-
 }
 
 .hole-image {
@@ -87,9 +81,7 @@ div#game {
     background-repeat: no-repeat;
     width: 112px;
     height: 104px;
-    /*-webkit-transition: all 4s linear;*/
     position: absolute;
-
 }
 
 .hole {

@@ -1,6 +1,6 @@
 var game = {
-	time: 10,
-    objective: 10,
+	time: 20,
+    objective: 19,
 	startTime: 0,
     currentTime: 0,
     score: 0,
@@ -23,10 +23,8 @@ $(document).ready(function() {
     $("#score-board").hide();
     $("#controls").show();
     $("#showBoard").click(function() {
-
         $("#welcome").hide("slide", { direction: "down" }, 100);
         $("#wrap").show();
-
     });
     $(".startButton").click(function() {
         initializeBoard();
@@ -62,17 +60,24 @@ $(document).ready(function() {
     });
 });
 
-//hides/shows
+/**
+ * Shows a mole in a random position.
+ * Then calls to resetMoles function in order to hide some moles.
+ */
 function handleMoles() {
     var index = Math.floor((Math.random() * 10) + 1);
     showMole($("#mole" + index), 900);
     resetMoles(true);
 }
 
+/**
+ * Shows a mole at a given speed
+ * @param mole to be shown
+ * @param speed to be used in the animation
+ */
 function showMole(mole, speed) {
     var now = new Date();
     var currentTime = now.getTime();
-
     if (creationTime[$(mole).attr('id')] == 0) {
         $(mole).show("slide", { direction: "down" }, speed);
         creationTime[$(mole).attr('id')] = currentTime;
@@ -81,14 +86,21 @@ function showMole(mole, speed) {
     }
 }
 
+/**
+ * Hides a mole at a given speed
+ * @param mole to be hidden
+ * @param speed to be used in the animation
+ */
 function hideMole(mole, speed) {
 	$(mole).hide("slide", { direction: "down" }, speed);
     creationTime[$(mole).attr('id')] = 0;
 }
 
-/*
-* Looks for shown moles and hide them if they need to be hidden
-*/
+/**
+ * Handles the hiding of moles. A mole will be hidden if they have been shown for more than 1400 milliseconds.
+ * when useWait param is true, we hide all moles and reset the game.
+ * @param useWait
+ */
 function resetMoles(useWait) {
     $(".mole").each(function(){
         if (!$(this).hasClass("hide")) {
@@ -99,12 +111,11 @@ function resetMoles(useWait) {
                 if (elapsedTime > 1400) {
                     hideMole(this, 900);
                 }
-            } else {
+            } else { //reset game
                 hideMole(this, 100);
                 $(this).unbind('click');
                 game.molesShown = 0;
                 $("#controls").show("slide", {direction: "right"}, 1000);
-
                 if (game.score >= game.objective) { //you win
                     $('#modalWinner').modal('show');
                     $("#sound-win")[0].play();
@@ -117,6 +128,10 @@ function resetMoles(useWait) {
     });
 }
 
+/**
+ * Handles the initialization of the board.
+ * Sets counters to 0, set startTime to 0.
+ */
 function initializeBoard() {
     $("#score-board").show("slide", { direction: "right" }, 800);
     $("#controls").hide("slide", {direction: "left"}, 800);
