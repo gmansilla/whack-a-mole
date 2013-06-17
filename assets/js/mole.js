@@ -8,7 +8,8 @@ var game = {
 	speedHard: 250,
 	startTime: 0,
     currentTime: 0,
-    score: 0
+    score: 0,
+    molesShown: 0
 };
 var creationTime = {
     mole1: 0,
@@ -25,11 +26,7 @@ var creationTime = {
 var newTimer;
 $(document).ready(function() {
     $(".startButton").click(function() {
-        var start = new Date();
-        game.startTime = start.getTime();
-        game.score = 0;
-        $("#sound-background")[0].play();
-        $("#sound-background")[0].volume = 0.5;
+        initializeBoard();
         $(".mole").each(function(){
             $(this).click(function() {
                 $("#sound-hit")[0].play();
@@ -53,9 +50,7 @@ $(document).ready(function() {
                         newTimer = null;
                         $("#sound-background")[0].currentTime = 0;
                         $("#sound-background")[0].pause();
-                        console.log("game is over");
                         resetMoles(false);
-
                     }
                 });
         }
@@ -75,6 +70,7 @@ function showMole(mole, speed) {
     $(mole).removeClass("hide");
     $(mole).show("slide", { direction: "down" }, speed);
     creationTime[$(mole).attr('id')] = currentTime;
+    game.molesShown++;
 }
 
 function hideMole(mole, speed) {
@@ -86,7 +82,6 @@ function hideMole(mole, speed) {
 * Looks for shown moles and hide them if they need to be hidden
 */
 function resetMoles(useWait) {
-    //console.log("resetting");
     $(".mole").each(function(){
         if (!$(this).hasClass("hide")) {
             if (useWait) {
@@ -101,4 +96,12 @@ function resetMoles(useWait) {
             }
         }
     });
+}
+
+function initializeBoard() {
+    var start = new Date();
+    game.startTime = start.getTime();
+    game.score = 0;
+    $("#sound-background")[0].play();
+    $("#sound-background")[0].volume = 0.5;
 }
