@@ -90,10 +90,6 @@
 
             </div>
             <div id="controls">
-                <div class="clear"></div>
-
-                <!--<div class="stopButton">Reset!</div>-->
-                <div class="clear"></div>
                 <p>
                     <button class="startButton btn btn-large btn-success" type="button">Start!</button>
                 </p>
@@ -127,6 +123,20 @@
         </div>
     </div>
 
+    <div id="modalWinner" class="modal hide fade" tabindex="-1"
+         role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+            <h3 id="myModalLabel" class="text-success">You Won!</h3>
+        </div>
+        <div class="modal-body">
+            <p class="text-info">As a reward, here's a happy potato</p>
+            <img src="assets/images/potato.gif" height="400px">
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-success" data-dismiss="modal" aria-hidden="true">Close</button>
+        </div>
+    </div>
     <div id="footer">
         <div class="container">
             <p class="muted credit">Developed by <a href="http://www.github.com/gmansilla/">Guillermo Mansilla</a>
