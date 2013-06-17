@@ -28,9 +28,11 @@ $(document).ready(function() {
         var start = new Date();
         game.startTime = start.getTime();
         game.score = 0;
-        console.log("starting game");
+        $("#sound-background")[0].play();
+        $("#sound-background")[0].volume = 0.5;
         $(".mole").each(function(){
             $(this).click(function() {
+                $("#sound-hit")[0].play();
                 game.score++;
                 hideMole($(this), 100);
                 $("#score").text("Current Score: " + game.score);
@@ -49,6 +51,8 @@ $(document).ready(function() {
                             newTimer.stop();
                         }
                         newTimer = null;
+                        $("#sound-background")[0].currentTime = 0;
+                        $("#sound-background")[0].pause();
                         console.log("game is over");
                         resetMoles(false);
 
