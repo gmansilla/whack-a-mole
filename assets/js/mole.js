@@ -1,5 +1,6 @@
 var game = {
 	time: 10,
+    objective: 10,
 	startTime: 0,
     currentTime: 0,
     score: 0,
@@ -25,11 +26,11 @@ $(document).ready(function() {
         initializeBoard();
         $(".mole").each(function(){
             $(this).click(function() {
-                $("#sound-hit")[0].play();
-                $("#sound-hit")[0].currentTime = 0;
                 game.score++;
+                $("#sound-hit")[0].play();
                 hideMole($(this), 100);
                 $("#counterHits").flipCounter("setNumber", game.score);
+                $("#sound-hit")[0].currentTime = 0;
             });
         });
 
@@ -97,8 +98,14 @@ function resetMoles(useWait) {
                 $(this).unbind('click');
                 game.molesShown = 0;
                 $("#controls").show("slide", {direction: "right"}, 1000);
-                $('#modalWinner').modal('show');
-                $("#sound-win")[0].play();
+
+                if (game.score >= game.objective) { //you win
+                    $('#modalWinner').modal('show');
+                    $("#sound-win")[0].play();
+                } else {
+                    $('#modalLooser').modal('show');
+                    $("#sound-lose")[0].play();
+                }
             }
         }
     });
