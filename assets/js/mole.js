@@ -98,6 +98,7 @@ function resetMoles(useWait) {
                 game.molesShown = 0;
                 $("#controls").show("slide", {direction: "right"}, 1000);
                 $('#modalWinner').modal('show');
+                $("#sound-win")[0].play();
             }
         }
     });
