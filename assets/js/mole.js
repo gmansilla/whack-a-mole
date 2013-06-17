@@ -22,6 +22,12 @@ var newTimer;
 $(document).ready(function() {
     $("#score-board").hide();
     $("#controls").show();
+    $("#showBoard").click(function() {
+
+        $("#welcome").hide("slide", { direction: "down" }, 100);
+        $("#wrap").show();
+
+    });
     $(".startButton").click(function() {
         initializeBoard();
         $(".mole").each(function(){

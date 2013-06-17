@@ -6,7 +6,26 @@
     <title>Whack A Mole</title>
 </head>
 <body>
-    <div id="wrap">
+    <div id="welcome">
+        <div class="container">
+            <div class="page-header">
+                <h1>Welcome to Whack A Mole Game</h1>
+            </div>
+            <p class="lead">
+                A lot of moles will appear randomly, your objective is to hit at least 15 of them within 15 seconds
+            </p>
+            <p>
+                Be sure to hit them before they start to hide...
+            </p>
+            <p>
+                <button id ="showBoard" class="btn btn-success" data-dismiss="modal" aria-hidden="true">Take me to the board!</button>
+            </p>
+        </div>
+        <div id="push2">
+
+        </div>
+    </div>
+    <div id="wrap" style="display: none">
         <div class="container">
             <div class="page-header">
                 <h1>Whack A Mole</h1>
@@ -158,6 +177,7 @@
             <button class="btn btn-success" data-dismiss="modal" aria-hidden="true">Close</button>
         </div>
     </div>
+
     <div id="footer">
         <div class="container">
             <p class="muted credit">Developed by <a href="http://www.github.com/gmansilla/">Guillermo Mansilla</a>

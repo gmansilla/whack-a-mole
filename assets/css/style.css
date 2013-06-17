@@ -3,14 +3,15 @@ body {
     height: 100%;
 }
 
-#wrap {
+#wrap, #welcome {
     min-height: 100%;
     height: auto !important;
     height: 100%;
     margin: 0 auto -60px;
 }
 
-#push,
+
+#push, #push2
 #footer {
     height: 60px;
 }
