@@ -26,17 +26,18 @@ $(document).ready(function() {
         $("#welcome").hide("slide", { direction: "down" }, 100);
         $("#wrap").show();
     });
+
+    $(".mole").click(function(){
+        game.score++;
+        $("#sound-hit")[0].play();
+        hideMole($(this), 100);
+        $("#counterHits").flipCounter("setNumber", game.score);
+        $("#sound-hit")[0].currentTime = 0;
+    });
+
     $(".startButton").click(function() {
         initializeBoard();
-        $(".mole").each(function(){
-            $(this).click(function() {
-                game.score++;
-                $("#sound-hit")[0].play();
-                hideMole($(this), 100);
-                $("#counterHits").flipCounter("setNumber", game.score);
-                $("#sound-hit")[0].currentTime = 0;
-            });
-        });
+
 
         if(newTimer == null) {
             newTimer = jQuery.timer(0, function(timer) {
@@ -58,6 +59,8 @@ $(document).ready(function() {
                 });
         }
     });
+
+
 });
 
 /**
@@ -113,7 +116,6 @@ function resetMoles(useWait) {
                 }
             } else { //reset game
                 hideMole(this, 100);
-                $(this).unbind('click');
                 game.molesShown = 0;
                 $("#controls").show("slide", {direction: "right"}, 1000);
                 if (game.score >= game.objective) { //you win
