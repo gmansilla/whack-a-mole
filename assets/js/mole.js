@@ -1,6 +1,6 @@
 var game = {
 	time: 20,
-    objective: 19,
+    objective: 30,
 	startTime: 0,
     currentTime: 0,
     score: 0,
@@ -45,6 +45,7 @@ $(document).ready(function() {
                     game.currentTime = currentTime.getTime();
                     var elapsedTime = (game.currentTime - game.startTime) / 1000 ;
                     if (elapsedTime < game.time) { //game is not over
+                        $("#counterTime").flipCounter("setNumber", game.time - elapsedTime);
                         handleMoles();
                         timer.reset(Math.floor(Math.random() * 1000));
                     } else {
@@ -55,6 +56,7 @@ $(document).ready(function() {
                         $("#sound-background")[0].currentTime = 0;
                         $("#sound-background")[0].pause();
                         resetMoles(false);
+                        $("#counterTime").flipCounter("setNumber", 0);
                     }
                 });
         }
@@ -69,7 +71,7 @@ $(document).ready(function() {
  */
 function handleMoles() {
     var index = Math.floor((Math.random() * 10) + 1);
-    showMole($("#mole" + index), 900);
+    showMole($("#mole" + index), 500);
     resetMoles(true);
 }
 
@@ -85,7 +87,6 @@ function showMole(mole, speed) {
         $(mole).show("slide", { direction: "down" }, speed);
         creationTime[$(mole).attr('id')] = currentTime;
         game.molesShown++;
-        $("#counterMolesShown").flipCounter("setNumber", game.molesShown);
     }
 }
 
@@ -112,12 +113,13 @@ function resetMoles(useWait) {
                 var currentTime = now.getTime();
                 var elapsedTime = currentTime - creationTime[$(this).attr('id')];
                 if (elapsedTime > 1400) {
-                    hideMole(this, 900);
+                    hideMole(this, 500);
                 }
             } else { //reset game
                 hideMole(this, 100);
-                game.molesShown = 0;
                 $("#controls").show("slide", {direction: "right"}, 1000);
+                $("p.stats").text(game.molesShown + " moles were shown, you hit on " + game.score);
+                //game.molesShown = 0;
                 if (game.score >= game.objective) { //you win
                     $('#modalWinner').modal('show');
                     $("#sound-win")[0].play();
@@ -140,10 +142,9 @@ function initializeBoard() {
     var start = new Date();
     game.startTime = start.getTime();
     game.score = 0;
+    game.molesShown = 0;
     $("#sound-background")[0].play();
     $("#sound-background")[0].volume = 0.5;
-    $("#score").text("Current Score: 0");
-
     $(".counter").flipCounter({
         number:0, // the initial number the counter should display, overrides the hidden field
         numIntegralDigits:2, // number of places left of the decimal point to maintain
