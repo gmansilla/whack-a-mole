@@ -37,8 +37,6 @@ $(document).ready(function() {
 
     $(".startButton").click(function() {
         initializeBoard();
-
-
         if(newTimer == null) {
             newTimer = jQuery.timer(0, function(timer) {
                     var currentTime = new Date();
@@ -119,7 +117,6 @@ function resetMoles(useWait) {
                 hideMole(this, 100);
                 $("#controls").show("slide", {direction: "right"}, 1000);
                 $("p.stats").text(game.molesShown + " moles were shown, you hit on " + game.score);
-                //game.molesShown = 0;
                 if (game.score >= game.objective) { //you win
                     $('#modalWinner').modal('show');
                     $("#sound-win")[0].play();
